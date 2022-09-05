@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.main {
+    padding: 16px;
+    height: 100%;
+}
+
+.as {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
