@@ -28,7 +28,7 @@ body {
     width: 160px;
     height: 160px;
     border-radius: 50%;
-   background-color: #EFF3F6;
+    background-color: #EFF3F6;
     padding: 20px;
 }
 
@@ -36,7 +36,7 @@ body {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background-color: white; 
+    background-color: #FFFF; 
 }
 
 .progress-ring {
@@ -48,7 +48,7 @@ body {
 .progress-circle {
     fill: none;
     stroke: #0062FF;
-    stroke-dasharray: 400;
     transform-origin: center;
     transform: rotate(-90deg);
+    transition: stroke-dashoffset 0.6s;
 }
