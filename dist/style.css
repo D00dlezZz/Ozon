@@ -6,13 +6,49 @@
     box-sizing: border-box;
 }
 
-.main {
-    padding: 16px;
-    height: 100%;
+body {
+    padding: 20px;
 }
 
-.as {
+.main {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.progress-container {
+    width: 160px;
+    height: 160px;
+    position: relative;
+
+}
+
+.outer {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+   background-color: #EFF3F6;
+    padding: 20px;
+}
+
+.inner {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: white; 
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0;
+    left: 0; 
+}
+
+.progress-circle {
+    fill: none;
+    stroke: #0062FF;
+    stroke-dasharray: 400;
+    transform-origin: center;
+    transform: rotate(-90deg);
 }
