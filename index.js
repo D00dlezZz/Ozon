@@ -1,6 +1,7 @@
 const circle = document.querySelector('.progress-circle');
 const radius = circle.r.baseVal.value; 
 const circumference = 2 * Math.PI * radius;
+const input = document.querySelector('.percent')
 
 circle.style.strokeDasharray = `${circumference} ${circumference}`;
 circle.style.strokeDashoffset = circumference;
@@ -11,5 +12,4 @@ function setProgress(persent) {
     circle.style.strokeDashoffset = offset;
 }
 
-
-setProgress(50)
+input.addEventListener('change', () => setProgress(input.value));
