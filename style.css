@@ -11,7 +11,7 @@ body {
 }
 
 .progress-wrapper {
-    height: 100%;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +68,16 @@ body {
     margin-top: 20px;
 }
 
+.percent {
+    width: 80px;
+    height: 40px;
+    background: #fff;
+    outline: none;
+    border-radius: 20px;
+    border: 1.5px solid;
+    text-align: center;
+}
+
 .checkbox {
     position: relative;
     width: 80px;
@@ -87,11 +97,11 @@ body {
 .checkbox::before {
     content: '';
     position: absolute;
-    height: 40px;
-    width: 40px;
+    height: 37px;
+    width: 37px;
     border-radius: 20px;
-    top: 0;
-    left: 0;
+    top: 1.5px;
+    left: 2px;
     background: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
     transition: .5s;
