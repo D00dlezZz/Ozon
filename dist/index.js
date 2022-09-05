@@ -12,4 +12,10 @@ function setProgress(persent) {
     circle.style.strokeDashoffset = offset;
 }
 
-input.addEventListener('change', () => setProgress(input.value));
+input.addEventListener('change', () => {
+    if (input.value <= 100) {
+        setProgress(input.value)
+    }else {
+        setProgress(100)  
+    }
+});
