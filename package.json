@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://D00dlezZz.io/",
+  "homepage": "https://D00dlezZz.io/Ozon",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
