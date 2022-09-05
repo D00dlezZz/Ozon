@@ -10,22 +10,37 @@
 </head>
 
 <body>
-    <h1>Progress</h1>
-    <section class="main">
-        <div class="progress-container">
-            <div class="outer">
-                <div class="inner"></div>
+    <div>
+        <h1>Progress</h1>
+        <section>
+            <div class="progress-wrapper">
+                <div class="progress-container">
+                    <div class="outer">
+                        <div class="inner"></div>
+                    </div>
+            
+                    <svg class="progress-ring" width="160" height="160">
+                        <circle class="progress-circle" 
+                        stroke-width="20" cx="80" cy="80" r="70"/>
+                    </svg>
+                </div>
             </div>
-    
-            <svg class="progress-ring" width="160" height="160">
-                <circle class="progress-circle" 
-                stroke-width="20" cx="80" cy="80" r="70"/>
-            </svg>
-        </div>
-    </section>
-    <section>
-        <input type="number" class="percent">
-    </section>
+            <div class="inputs-container">
+                <div class="ass">
+                    <input type="number" class="percent">
+                    <span>Value</span>
+                </div>
+                <div class="ass">
+                    <input type="checkbox" class="checkbox">
+                    <span>Animate</span>
+                </div>
+                <div class="ass">
+                    <input type="checkbox" class="checkbox">
+                    <span>Hide</span>
+                </div>
+            </div>
+        </section>
+    </div>
     <script src="./index.js"></script>
 </body>
 
