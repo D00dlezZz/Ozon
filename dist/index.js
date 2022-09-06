@@ -4,6 +4,7 @@ const circumference = 2 * Math.PI * radius;
 const percentInput = document.getElementById('percent')
 const hideInput = document.getElementById('hide')
 const animateInput = document.getElementById('animate')
+const circleContainer = document.querySelector('.progress-container')
 
 circle.style.strokeDasharray = `${circumference} ${circumference}`;
 circle.style.strokeDashoffset = circumference;
@@ -36,7 +37,7 @@ class Progress {
 
     setHiddenValue() {
         this.toggleHiddenValue();
-        this.isHidden ? circle.style.display = 'none' : circle.style.display = 'flex';
+        this.isHidden ? circleContainer.classList.add('hidden') : circleContainer.classList.remove('hidden');
     }
 
     setAnimationValue() {
@@ -48,7 +49,10 @@ class Progress {
 
 const progress = new Progress;
 
-percentInput.addEventListener('change', () => progress.setValueLimit(percentInput.value));
+percentInput.addEventListener('input', () => {
+    percentInput.value = percentInput.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+    progress.setValueLimit(percentInput.value);
+});
 
 hideInput.addEventListener('click', () => progress.setHiddenValue()); 
 
