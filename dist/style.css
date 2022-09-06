@@ -73,12 +73,20 @@ h1 {
 }
 
 
+.control-buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center
+
+}
+
+
 .control-button-container {
     display: flex;
     align-items: center;
-    margin: 10px auto;
-    width: 60%;
-  
+    margin-top: 20px;
+    width: 150px;
 }
 
 .control-button-percent {
