@@ -12,7 +12,7 @@
 <body>
     <section>
         <h1>Progress</h1>
-        <div>
+        <div class="main-wrapper">
             <div class="progress-wrapper">
                 <div class="progress-container">
                     <div class="outer">
@@ -20,30 +20,40 @@
                     </div>
             
                     <svg class="progress-ring" width="180" height="180">
-                        <circle class="progress-circle"
-                        stroke-width="15" cx="90" cy="90" r="82" fill="transparent"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                              <stop offset="0%" stop-color="#0062FF" />
+                              <stop offset="100%" stop-color="#5eaefd" />
+                            </linearGradient>
+                          </defs>
+                        <circle 
+                        class="progress-circle"
+                        stroke="url(#gradient)"
+                        stroke-width="15" 
+                        cx="90" cy="90" r="82" 
+                        fill="transparent"
+                        />
                     </svg>
                 </div>
             </div>
-            <div class="inputs-container">
-                <div class="ass">
+            <div class="control-buttons-wrapper">
+                <div class="control-button-container">
                     <input 
-                    type="number" 
-                    class="percent" 
+                    type="text" 
+                    class="control-button-percent" 
                     value="0" 
-                    min="1" 
-                    max="100" 
+                    maxlength="3"
                     id="percent"
                     >
-                    <label>Value</label>
+                    <label class="control-button-title">Value</label>
                 </div>
-                <div class="ass">
-                    <input type="checkbox" class="checkbox" id="animate">
-                    <label>Animate</label>
+                <div class="control-button-container">
+                    <input type="checkbox" class="control-button-checkbox" id="animate">
+                    <label class="control-button-title">Animate</label>
                 </div>
-                <div class="ass">
-                    <input type="checkbox" class="checkbox" id="hide">
-                    <label>Hide</label>
+                <div class="control-button-container">
+                    <input type="checkbox" class="control-button-checkbox" id="hide">
+                    <label class="control-button-title">Hide</label>
                 </div>
             </div>
         </div>
