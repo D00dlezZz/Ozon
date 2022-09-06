@@ -1,29 +1,55 @@
 const circle = document.querySelector('.progress-circle');
 const radius = circle.r.baseVal.value; 
 const circumference = 2 * Math.PI * radius;
-const input = document.querySelector('.percent')
-const hide = document.getElementById('hide')
-const animate = document.getElementById('animate')
+const percentInput = document.getElementById('percent')
+const hideInput = document.getElementById('hide')
+const animateInput = document.getElementById('animate')
 
 circle.style.strokeDasharray = `${circumference} ${circumference}`;
 circle.style.strokeDashoffset = circumference;
 
-let isHidden = false;
-let isAnimated = false;
+class Progress {
+    isHidden = false;   
+    isAnimated = false;
 
-function setProgress(percent) {
-    const offset = circumference - percent / 100 * circumference;
-    circle.style.strokeDashoffset = offset;
+    setValue(percent) {
+        const offset = circumference - percent / 100 * circumference;
+        circle.style.strokeDashoffset = offset;
+    }
+
+    setValueLimit(percent) {
+        if ( percent <= 100) {
+            this.setValue(percent)
+        }else {
+            percentInput.value = 100;
+            this.setValue(percentInput.value)
+        }
+    }
+
+    toggleHiddenValue() {
+        this.isHidden = !this.isHidden;
+    }
+
+    toggleAnimatedValue() {
+        this.isAnimated = !this.isAnimated;
+    }
+
+    setHiddenValue() {
+        this.toggleHiddenValue();
+        this.isHidden ? circle.style.display = 'none' : circle.style.display = 'flex';
+    }
+
+    setAnimationValue() {
+        this.toggleAnimatedValue();
+        this.isAnimated ? circle.classList.add('animate') : circle.classList.remove('animate');
+    }
+
 }
 
-input.addEventListener('change', () => input.value <= 100 ? setProgress(input.value) : setProgress(100));
+const progress = new Progress;
 
-hide.addEventListener('click', () => {
-   isHidden = !isHidden;
-   isHidden === true ? circle.style.display = 'none' : circle.style.display = 'flex';
-}); 
+percentInput.addEventListener('change', () => progress.setValueLimit(percentInput.value));
 
-animate.addEventListener('click', () => {
-    isAnimated = !isAnimated;
-    isAnimated === true ? circle.classList.add('animate') : circle.classList.remove('animate');
- }); 
+hideInput.addEventListener('click', () => progress.setHiddenValue()); 
+
+animateInput.addEventListener('click', () => progress.setAnimationValue()); 
