@@ -44,7 +44,7 @@ class UiProgress extends HTMLElement {
         this.setValue(percentInput.value,circumference, circle)
 
         percentInput.addEventListener('input', () => {
-            percentInput.value = percentInput.value.replace(/[/d.]/g, '').replace(/(\..*)\./g, '$1');
+            percentInput.value = percentInput.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
             if (percentInput.value > 100) {
                 percentInput.value = 100
             }
