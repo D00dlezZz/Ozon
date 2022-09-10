@@ -50,7 +50,7 @@
     transition: stroke-dashoffset 0.6s;
 }
 
-.animate {
+.animated {
     animation: 2s linear 0s normal none infinite running rot;
     -webkit-animation: 2s linear 0s normal none infinite running rot;
 }
