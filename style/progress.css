@@ -1,22 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    font-family: Poppins;
-}
-
-:host {
-    display: block;
-  }
-
-body {
-    padding: 20px;
-}
-
 section {
     margin-bottom: 50px;
 }
@@ -175,20 +156,19 @@ h1 {
 
 
 
-  @keyframes rot {
+@keyframes rot {
     0% {
-      transform: rotate(-90deg);
+    transform: rotate(-90deg);
     }
     100% {
-      transform: rotate(270deg);
+    transform: rotate(270deg);
     }
-  }
-  @-webkit-keyframes rot {
+}
+@-webkit-keyframes rot {
     0% {
-      transform: rotate(-90deg);
+    transform: rotate(-90deg);
     }
     100% {
-      transform: rotate(270deg);
+    transform: rotate(270deg);
     }
-  }
-   
+}
