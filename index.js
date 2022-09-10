@@ -20,11 +20,11 @@ class UiProgress extends HTMLElement {
         circle.style.strokeDashoffset = String(circumference - percent / 100 * circumference);
     }
 
-    setAnimationValue(circle) {
+    toggleAnimationValue(circle) {
         circle.classList.toggle('animate');
     }
 
-    setHiddenValue(circleContainer) {
+    toggleHiddenValue(circleContainer) {
         circleContainer.classList.toggle('hidden');
     }
 
@@ -51,8 +51,8 @@ class UiProgress extends HTMLElement {
             this.setValue(percentInput.value, circumference, circle);
         });
 
-        animateInput.addEventListener('click', () => this.setAnimationValue(circle)); 
-        hideInput.addEventListener('click', () => this.setHiddenValue(circleContainer));
+        animateInput.addEventListener('click', () => this.toggleAnimationValue(circle)); 
+        hideInput.addEventListener('click', () => this.toggleHiddenValue(circleContainer));
 
     }
 render() {
