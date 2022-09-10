@@ -12,22 +12,12 @@ class UiProgress extends HTMLElement {
         return ["value"]
     }
 
-    attributeChangedCallback(prop, oldValue, newValue) {
+    attributeChangedCallback(prop) {
         if(prop === "value") this.render();
     }
 
     setValue(percent, circumference, circle) {
-        const offset = circumference - percent / 100 * circumference;
-        circle.style.strokeDashoffset = offset;
-    }
-
-    setValueLimit(percent, circumference, circle) {
-        console.log(percent);
-        if ( percent <= 100 ) {
-            this.setValue(percent, circumference, circle)
-        }else {
-            this.setValue( 100, circumference, circle)
-        }
+        circle.style.strokeDashoffset = String(circumference - percent / 100 * circumference);
     }
 
     setAnimationValue(circle) {
@@ -50,70 +40,72 @@ class UiProgress extends HTMLElement {
         const animateInput = section.querySelector('.animated')
         const circleContainer = section.querySelector('.progress-container')
 
-        const offset = circumference - percentInput.value / 100 * circumference;
-        circle.style.strokeDashoffset = offset;
         circle.style.strokeDasharray = `${circumference} ${circumference}`;
-      
+        this.setValue(percentInput.value,circumference, circle)
+
         percentInput.addEventListener('input', () => {
-            percentInput.value = percentInput.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
-            this.setValueLimit(percentInput.value, circumference, circle);
+            percentInput.value = percentInput.value.replace(/[/d.]/g, '').replace(/(\..*)\./g, '$1');
+            if (percentInput.value > 100) {
+                percentInput.value = 100
+            }
+            this.setValue(percentInput.value, circumference, circle);
         });
 
         animateInput.addEventListener('click', () => this.setAnimationValue(circle)); 
         hideInput.addEventListener('click', () => this.setHiddenValue(circleContainer));
 
     }
-
-    render() {
-        this.innerHTML = ` 
-        <section>
-            <h1>Progress</h1>
-            <div class="main-wrapper">
-                <div class="progress-wrapper">
-                    <div class="progress-container">
-                        <div class="outer">
-                            <div class="inner"></div>
-                        </div>
-                
-                        <svg class="progress-ring" width="180" height="180">
-                            <defs>
-                                <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#0062FF" />
-                                <stop offset="100%" stop-color="#5eaefd" />
-                                </linearGradient>
-                            </defs>
-                            <circle 
-                            class="progress-circle"
-                            stroke="url(#gradient)"
-                            stroke-width="15" 
-                            cx="90" cy="90" r="82" 
-                            fill="transparent"
-                            />
-                        </svg>
+render() {
+    this.innerHTML = ` 
+    <section>
+        <h1>Progress</h1>
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="progress-container">
+                    <div class="outer">
+                        <div class="inner"></div>
                     </div>
-                </div>
-                <div class="control-buttons-wrapper">
-                    <div class="control-button-container">
-                        <input 
-                        type="text" 
-                        class="control-button-percent" 
-                        value="${this.value}" 
-                        maxlength="3"
-                        >
-                        <label class="control-button-title">Value</label>
-                    </div>
-                    <div class="control-button-container">
-                        <input type="checkbox" class="control-button-checkbox animated">
-                        <label class="control-button-title">Animate</label>
-                    </div>
-                    <div class="control-button-container">
-                        <input type="checkbox" class="control-button-checkbox hide">
-                        <label class="control-button-title">Hide</label>
-                    </div>
+            
+                    <svg class="progress-ring" width="180" height="180">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#0062FF" />
+                            <stop offset="100%" stop-color="#5eaefd" />
+                            </linearGradient>
+                        </defs>
+                        <circle 
+                        class="progress-circle"
+                        stroke="url(#gradient)"
+                        stroke-width="15" 
+                        cx="90" cy="90" r="82" 
+                        fill="transparent"
+                        />
+                    </svg>
                 </div>
             </div>
-        </section>` 
-    }
+            <div class="control-buttons-wrapper">
+                <div class="control-button-container">
+                    <input 
+                    type="text" 
+                    class="control-button-percent" 
+                    value="${this.value}" 
+                    maxlength="3"
+                    >
+                    <label class="control-button-title">Value</label>
+                </div>
+                <div class="control-button-container">
+                    <input type="checkbox" class="control-button-checkbox animated">
+                    <label class="control-button-title">Animate</label>
+                </div>
+                <div class="control-button-container">
+                    <input type="checkbox" class="control-button-checkbox hide">
+                    <label class="control-button-title">Hide</label>
+                </div>
+            </div>
+        </div>
+    </section>
+    ` 
+}
 }
 
 customElements.define('ui-progress', UiProgress)
