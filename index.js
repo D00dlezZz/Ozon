@@ -35,10 +35,10 @@ class UiProgress extends HTMLElement {
         const circle = section.querySelector('.progress-circle');
         const radius = circle.r.baseVal.value; 
         const circumference = 2 * Math.PI * radius;
-        const percentInput = section.querySelector('.control-button-percent')
+        const percentInput = section.querySelector('.control-input-percent')
         const hideInput = section.querySelector('.hide')
         const animateInput = section.querySelector('.animated')
-        const circleContainer = section.querySelector('.progress-container')
+        const circleContainer = section.querySelector('.progress-circle-container')
 
         circle.style.strokeDasharray = `${circumference} ${circumference}`;
         this.setValue(percentInput.value,circumference, circle)
@@ -57,11 +57,12 @@ class UiProgress extends HTMLElement {
     }
 render() {
     this.innerHTML = ` 
-    <section>
-        <h1>Progress</h1>
-        <div class="main-wrapper">
-            <div class="progress-wrapper">
-                <div class="progress-container">
+    <section class="progress-main-wrapper">
+        <h1 class="progress-main-title">Progress</h1>
+        <div class="progress-main-container">
+            <div class="progress-circle-wrapper">
+                <div class="progress-circle-container">
+
                     <div class="outer">
                         <div class="inner"></div>
                     </div>
@@ -87,7 +88,7 @@ render() {
                 <div class="control-button-container">
                     <input 
                     type="text" 
-                    class="control-button-percent" 
+                    class="control-input-percent" 
                     value="${this.value}" 
                     maxlength="3"
                     >
